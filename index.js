@@ -12,5 +12,24 @@ const tutorials = [
 ];
 
 const titleCased = () => {
-  return tutorials
+  return tutorials.map((tutorial) => {
+    return tutorial.split(' ').map(word => {
+        return `${word[0].toUpperCase()}${word.slice(1)}`;
+      }
+    ).join(' ');
+  });
 }
+
+const titleCasedLineByLine = () => {
+  const result = tutorials.map((tutorial) => {
+    const tutorialSplit = tutorial.split(' ');
+    const tutorialUpperCaseArray = tutorialSplit.map(word => {
+      const firstLetterUpperCase = word[0].toUpperCase();
+      const theRestOfTheLetters = word.slice(1);
+      return `${firstLetterUpperCase}${theRestOfTheLetters}`;
+    });
+    const tutorialUpperCaseString = tutorialUpperCaseArray.join(' ');
+    return tutorialUpperCaseString;
+  });
+  return result;
+};
